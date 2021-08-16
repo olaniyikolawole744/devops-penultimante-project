@@ -4,7 +4,7 @@ pipeline {
         stage('Login to Dockerhub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-key', passwordVariable: 'mypass', usernameVariable: 'myname')]) {
-                sh 'cd code && sudo docker build -t direction-prod:latest .'
+                sh 'cd code && sudo docker build -t direction-dev:latest .'
                 sh 'sudo docker tag direction-prod:latest olaniyikolawole744/direction-prod:latest'
                 sh 'sudo docker tag direction-dev:latest olaniyikolawole744/direction-dev:latest'
                 sh 'sudo docker login -u olaniyikolawole744 -p $mypass'
