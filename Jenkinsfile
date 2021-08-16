@@ -28,7 +28,7 @@ pipeline {
                 branch "develop"
             }
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'node-server-key', keyFileVariable: '')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-node-key', keyFileVariable: '')]) {
                 sh 'ssh ec2-user@52.91.205.82 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-dev:latest'
                     }
                 }
