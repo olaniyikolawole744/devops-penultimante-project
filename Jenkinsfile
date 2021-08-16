@@ -1,10 +1,6 @@
 pipeline {
     agent any
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials ('docker-login')
-    }
-
-    stages {
+      stages {
         stage('Login to Dockerhub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-key', passwordVariable: 'mypass', usernameVariable: 'myname')]) {
