@@ -15,7 +15,7 @@ provider "aws" {
 }
 
 module "server-generator" {
-  source              = "../../modules"
+  source              = "../../ec2-module"
   availability-zone   = var.az2
   role                = var.role2
   purpose             = var.purpose2
