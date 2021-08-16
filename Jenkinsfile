@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'node-server-key', keyFileVariable: '')]) {
-                sh 'ssh ec2-user@54.162.18.130 sudo docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-prod:latest'
+                sh 'ssh ec2-user@54.90.171.174 sudo docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-prod:latest'
              }
          }
     }
@@ -31,7 +31,7 @@ pipeline {
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-server-key', keyFileVariable: '')]) {
-                sh 'ssh ec2-user@34.229.241.39 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-dev:latest'
+                sh 'ssh ec2-user@54.174.15.235 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-dev:latest'
                     }
                 }
             }
