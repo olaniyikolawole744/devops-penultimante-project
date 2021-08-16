@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo yum-add-repository ppa:ansible/ansible
+sudo amazon-linux-extras install ansible2 -y

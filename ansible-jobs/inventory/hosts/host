@@ -1,0 +1,17 @@
+[jenkins-server]
+34.203.201.82 ansible_ssh_user=ec2-user
+
+[devapp-server]
+54.159.254.54 ansible_ssh_user=ec2-user
+
+[prodapp-server]
+34.201.99.234 ansible_ssh_user=ec2-user
+
+[jenkins-replace]
+54.172.106.251 ansible_ssh_user=ec2-user
+
+[ansible-server]
+34.201.8.45 ansible_ssh_user=ec2-user
+
+
+
