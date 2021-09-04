@@ -23,7 +23,7 @@ pipeline {
          }
     }
 
-        stage('Manage Develop Branch') {
+        stage('Manage Develop Branch.') {
             when {
                 branch "develop"
             }
