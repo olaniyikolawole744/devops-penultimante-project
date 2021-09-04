@@ -11,7 +11,7 @@ pipeline {
                 }
             }
           }
-        }
+        
 
         stage('Manage Main Branch') {
             when {
