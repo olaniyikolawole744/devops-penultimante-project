@@ -5,9 +5,9 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'mypass', usernameVariable: 'myuser')]) {
                 sh 'cd code && sudo docker build -t direction-app:latest .'
-                sh 'sudo docker tag direction-app:latest olaniyikolawole744/direction-dev:latest'
+                sh 'sudo docker tag direction-app:latest olaniyikolawole744/direction-prod:latest'
                 sh 'sudo docker login -u olaniyikolawole744 -p $mypass'
-                sh 'sudo docker push olaniyikolawole744/direction-dev:latest'
+                sh 'sudo docker push olaniyikolawole744/direction-prod:latest'
             }
           }
         }
