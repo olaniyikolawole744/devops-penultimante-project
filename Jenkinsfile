@@ -18,7 +18,7 @@ pipeline {
               branch "main"
             }
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins_ssh_credentials', keyFileVariable: '')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins_credentials', keyFileVariable: '')]) {
                 sh 'ssh ec2-user@50.17.81.243 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-prod:latest'
              }
          }
@@ -29,7 +29,7 @@ pipeline {
                 branch "develop"
             }
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins_ssh_credentials', keyFileVariable: '')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins_credentials', keyFileVariable: '')]) {
                 sh 'ssh ec2-user@3.92.201.200 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-dev:latest'
                    }
                 }
