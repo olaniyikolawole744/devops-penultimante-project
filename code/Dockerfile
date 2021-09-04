@@ -1,6 +1,4 @@
 #FROM dockette/mvn
-#FROM dockette/mvn
-#FROM ringcentral/maven
 FROM zenika/alpine-maven
 LABEL maintainer="niyikolawole744@yahoo.com"
 COPY . /data
