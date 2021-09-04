@@ -1,7 +1,8 @@
 #FROM dockette/mvn
 #FROM dockette/mvn
-FROM ringcentral/maven
-LABEL maintainer="shegoj@yahoo.com"
+#FROM ringcentral/maven
+FROM zenika/alpine-maven
+LABEL maintainer="niyikolawole744@yahoo.com"
 COPY . /data
 WORKDIR /data
 RUN ls -ltr
