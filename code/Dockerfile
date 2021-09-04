@@ -1,5 +1,6 @@
 #FROM dockette/mvn
-FROM dockette/mvn
+#FROM dockette/mvn
+FROM ringcentral/maven
 LABEL maintainer="shegoj@yahoo.com"
 COPY . /data
 WORKDIR /data

@@ -20,7 +20,7 @@ module "server-generator" {
   role                = var.role2
   purpose             = var.purpose2
   inboundport         = var.inboundport
+  inboundport2         = var.inboundport2
   machine-ami         = var.machine-ami
-  subnet-suffix       = var.subnet-suffix
   bootstrap-file      = var.bootstrap-file
 }

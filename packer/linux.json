@@ -19,12 +19,14 @@
       }
   }
 ],
+
   "provisioners": [
     {
       "type": "shell",
       "script": "linux-script.sh"
     }
   ],
+  
   "sensitive-variables": ["access_key","secret_key"]
 }
 

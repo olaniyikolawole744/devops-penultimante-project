@@ -18,16 +18,17 @@ variable "machine-ami" {
   type = string
 }
 
-variable "subnet-suffix" {
-  type = string
-}
-
 variable "region" {
   type = string
 }
 
 variable "bootstrap-file" {
 type = string
+}
+
+variable "inboundport2" {
+  type = string
+  default = ""
 }
 
 

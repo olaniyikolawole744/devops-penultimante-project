@@ -21,6 +21,5 @@ module "server-generator" {
   purpose             = var.purpose2
   inboundport         = var.inboundport
   machine-ami         = var.machine-ami
-  subnet-suffix       = var.subnet-suffix
   bootstrap-file      = data.template_file.bootstrap_file.template
 }

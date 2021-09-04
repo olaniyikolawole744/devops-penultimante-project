@@ -1,4 +1,7 @@
-
+variable "bootstrap-file" {
+type = string
+default = ""
+}
 
 variable "instance-type" {
   type    = string
@@ -7,6 +10,7 @@ variable "instance-type" {
 
 variable "availability-zone" {
   type = string
+  default = ""
 }
 
 variable "key-name" {
@@ -21,46 +25,25 @@ variable "environment" {
 
 variable "role" {
   type = string
+  default = ""
 }
 
 variable "purpose" {
   type = string
+  default  = ""
 }
 
 variable "inboundport" {
   type = string
+  default = ""
 }
-
 
 variable "machine-ami" {
   type = string
+  default = ""
 }
 
-variable "az-suffix" {
-  default = ["a","b","c"]
+variable "inboundport2" {
+  type = string
+  default = ""
 }
-
-variable "region" {
-  default = "us-east-1"
-}
-
-variable "az-suffix-2" {
-  type = map
-  default = {
-    "us-east-1a" = 0
-    "us-east-1b" = 1
-    "us-east-1c" = 2
-      }
-}
-
-variable "subnet-suffix" {
-type = string
-}
-
-variable "bootstrap-file" {
-type = string
-default = ""
-}
-
-
-

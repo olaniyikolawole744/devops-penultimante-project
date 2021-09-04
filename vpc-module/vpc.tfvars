@@ -1,4 +1,10 @@
 vpc-cidr-block  = "10.0.0.0/16"
 vpc-tag-name    = "devop-vpc"
 region          = "us-east-1" 
- 
+name            = "devop-vpc"
+azA             = "us-east-1a"
+azB             = "us-east-1c"
+azC             = "us-east-1b"
+cidrsubA        = "10.0.101.0/24"
+cidrsubB        = "10.0.102.0/24"
+cidrsubC        = "10.0.103.0/24"

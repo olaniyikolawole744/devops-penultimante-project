@@ -11,5 +11,38 @@ variable "az-suffix" {
 }
 
 variable "region" {
-  default = "us-west-2"
+  default = "us-east-1"
 }
+
+variable "name" {
+  default = ""
+}
+
+variable "azA" {
+  default = ""
+}
+
+variable "azB" {
+  default = ""
+}
+
+variable "azC" {
+  default = ""
+}
+
+variable "cidrsubA" {
+  default = ""
+}
+
+variable "cidrsubB" {
+  default = ""
+}
+
+variable "cidrsubC" {
+  default = ""
+}
+
+
+
+
+

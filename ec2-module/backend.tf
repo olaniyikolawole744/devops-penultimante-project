@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "kafka-bucket744"
-    key    = "project/kafka/terraform.tfstate"
-    region = "us-west-2"
+    bucket = "dirapp-744"
+    key    = "miniproject/terraform.tfstate"
+    region = "us-east-1"
   }
 }
 
