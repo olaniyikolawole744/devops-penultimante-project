@@ -1,11 +1,11 @@
 pipeline {
     agent any
       stages {
-        stage('Build and puch image to Dockerhub') {
+        stage('Build and push image to Dockerhub') {
             steps {
                withCredentials([usernamePassword(credentialsId: 'docker_credentials', passwordVariable: 'mypass', usernameVariable: 'myuserid')]) {
-                sh 'cd code && sudo docker build -t direction-app:latest .'
-                sh 'sudo docker tag direction-app:latest olaniyikolawole744/direction-dev:latest'
+                sh 'cd code && sudo docker build -t direction-dev:latest .'
+                sh 'sudo docker tag direction-dev:latest olaniyikolawole744/direction-dev:latest'
                 sh 'sudo docker login -u olaniyikolawole744 -p $mypass'
                 sh 'sudo docker push olaniyikolawole744/direction-dev:latest'
                 }
@@ -13,14 +13,14 @@ pipeline {
           }
         }
 
-        stage('Manage Master Branch') {
+        stage('Manage Main Branch') {
             when {
               branch "main"
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins_ssh_credentials', keyFileVariable: '')]) {
                 sh 'ssh ec2-user@50.17.81.243 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-prod:latest'
-                   }
+             }
          }
     }
 
