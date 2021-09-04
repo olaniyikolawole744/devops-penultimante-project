@@ -3,10 +3,10 @@ pipeline {
       stages {
         stage('Build and push image to Dockerhub') {
             steps {
-               withCredentials([usernamePassword(credentialsId: 'docker_credentials', passwordVariable: 'mypass', usernameVariable: 'myuserid')]) {
+               withCredentials([usernamePassword(credentialsId: '4f923a21-7b2e-4b4c-8bba-eb3d16b57b1d', passwordVariable: 'mypw', usernameVariable: 'myusr')]) {
                 sh 'cd code && sudo docker build -t direction-dev:latest .'
                 sh 'sudo docker tag direction-dev:latest olaniyikolawole744/direction-dev:latest'
-                sh 'sudo docker login -u olaniyikolawole744 -p $mypass'
+                sh 'sudo docker login -u olaniyikolawole744 -p $mypw'
                 sh 'sudo docker push olaniyikolawole744/direction-dev:latest'
                 }
             }
