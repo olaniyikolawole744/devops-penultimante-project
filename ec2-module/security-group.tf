@@ -13,16 +13,8 @@ resource "aws_security_group" "server-sg" {
 
   ingress {
     description = "${var.purpose} Server Inbound Rule"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "${var.purpose} Server Inbound Rule"
-    from_port   = 80
-    to_port     = 80
+    from_port   = var.inboundport2
+    to_port     = var.inboundport2
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

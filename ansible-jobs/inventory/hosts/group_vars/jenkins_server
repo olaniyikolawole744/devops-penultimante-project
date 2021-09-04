@@ -1,0 +1,4 @@
+welcome_message: JENKINS SERVER
+neededapps:
+  - git
+  - daemonize
