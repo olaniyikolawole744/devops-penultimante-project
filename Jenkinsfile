@@ -11,7 +11,7 @@ pipeline {
                 }
             }
           }
-        }
+        
 
         stage('Manage Main Branch') {
             when {
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins_ssh_credentials', keyFileVariable: '')]) {
                 sh 'ssh ec2-user@50.17.81.243 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-prod:latest'
-                   }
+            }
          }
     }
 
