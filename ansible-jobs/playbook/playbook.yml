@@ -54,9 +54,9 @@
           ssh_key_bits: 2048
           ssh_key_file: .ssh/id_rsa
 
-      - name: Fetch the keyfile from one server to another
+      - name: Fetch jenkins ssh key to ansible host buffer
         fetch: 
-          src: "home/jenkins/.ssh/id_rsa.pub"
+          src: "/home/jenkins/.ssh/id_rsa.pub"
           dest: "buffer/{{ansible_hostname}}-id_rsa.pub"
           flat: yes
       
