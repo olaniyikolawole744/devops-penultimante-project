@@ -19,7 +19,7 @@ pipeline {
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'remotenode-credentials', keyFileVariable: '')])  {
-                sh 'ssh ec2-user@34.212.227.71 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-prod:latest'
+                sh 'ssh ec2-user@34.221.0.51 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-prod:latest'
             }
          }
     }
@@ -30,7 +30,7 @@ pipeline {
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'remotenode-credentials', keyFileVariable: '')])  {
-                sh 'ssh ec2-user@54.149.175.33 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-dev:latest'
+                sh 'ssh ec2-user@34.211.224.229 sudo  docker run -d -p 8080:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olaniyikolawole744/direction-dev:latest'
                    }
                 }
             }
