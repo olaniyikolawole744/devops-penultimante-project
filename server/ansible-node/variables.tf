@@ -28,7 +28,6 @@ type = string
 
 variable "inboundport2" {
   type = string
-  default = ""
 }
 
 

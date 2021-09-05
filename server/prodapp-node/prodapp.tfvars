@@ -1,5 +1,5 @@
 
-az2                 = "us-east-1c"
+az2                 = "us-west-2c"
 role2               = "prodapp-server"
 purpose2            = "prodapp-server"
 inboundport         = "8080"

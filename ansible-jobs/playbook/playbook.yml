@@ -32,7 +32,34 @@
   - hosts:
       - jenkins_server
     become: yes
+    become_user: root
     tasks:
+      - name: create jenkins user
+        ansible.builtin.user:
+          name: jenkins
+          comment: jenkins user
+          uid: 1040
+          group: wheel
+
+      - name: grant jenkins user sudoer privilege
+        ansible.builtin.lineinfile:
+          path: /etc/sudoers
+          regexp: '%wheel ALL=(ALL) NOPASSWD: ALL'
+          line: '%jenkins ALL=(ALL) NOPASSWD: ALL'
+
+      - name: generate ssh key for jenkins
+        ansible.builtin.user:
+          name: jenkins
+          generate_ssh_key: yes
+          ssh_key_bits: 2048
+          ssh_key_file: .ssh/id_rsa
+
+      - name: Fetch the keyfile from one server to another
+        fetch: 
+          src: "home/jenkins/.ssh/id_rsa.pub"
+          dest: "buffer/{{ansible_hostname}}-id_rsa.pub"
+          flat: yes
+      
       - name: install epel dependency
         ansible.builtin.template:
           src: epelrepo.j2
@@ -44,7 +71,6 @@
         yum:
           name: '{{ neededapps }}'
           state: latest
-
 
       - name: Download jenkins repo
         get_url:
@@ -67,8 +93,12 @@
           state: started
           enabled: true
 
+   #   - name: Sleep for 30 seconds and continue with play
+   #     wait_for: timeout=30
       - name: Sleep for 30 seconds and continue with play
-        wait_for: timeout=30
+        wait_for:
+          timeout: 30
+        delegate_to: localhost
 
       - name: Get init password Jenkins
         shell: cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -78,3 +108,31 @@
       - name: Print init password Jenkins
         debug:
           var: result.stdout
+
+  - hosts:
+      - dev_server
+    become: yes
+    become_user: root
+    tasks:
+      - name: copy jenkins public ssh key to prod tmp folder
+        copy:
+          src: "buffer/{{item.dest}}-id_rsa.pub"
+          dest: "/tmp/remote-id_rsa.pub"
+
+      - name: copy jenkins ssh key from tmp folder to authorized key
+        shell: "cat /tmp/remote-id_rsa.pub >> /home/ec2-user/.ssh/authorized_keys"
+        register: addtoauth
+
+  - hosts:
+      - prod_server
+    become: yes
+    become_user: root
+    tasks:
+      - name: copy jenkins public ssh key to prod tmp folder
+        copy:
+          src: "buffer/{{item.dest}}-id_rsa.pub"
+          dest: "/tmp/remote-id_rsa.pub"
+
+      - name: copy jenkins ssh key from tmp folder to authorized key
+        shell: "cat /tmp/remote-id_rsa.pub >> /home/ec2-user/.ssh/authorized_keys"
+        register: addtoauth
