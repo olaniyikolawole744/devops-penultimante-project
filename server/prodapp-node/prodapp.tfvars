@@ -1,4 +1,3 @@
-
 az2                 = "us-west-2c"
 role2               = "prodapp-server"
 purpose2            = "prodapp-server"
