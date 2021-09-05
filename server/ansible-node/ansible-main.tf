@@ -20,6 +20,7 @@ module "server-generator" {
   role                = var.role2
   purpose             = var.purpose2
   inboundport         = var.inboundport
+  inboundport2        = var.inboundport2
   machine-ami         = var.machine-ami
   bootstrap-file      = data.template_file.bootstrap_file.template
 }

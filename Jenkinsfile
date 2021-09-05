@@ -1,7 +1,7 @@
 pipeline {
     agent any
       stages {
-        stage('Build and puch image to Dockerhub') {
+        stage('Build and push image to Dockerhub') {
             steps {
                withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'id2', usernameVariable: 'user2')])  {
                 sh 'cd code && sudo docker build -t direction-app:latest .'
