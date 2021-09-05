@@ -4,8 +4,8 @@ pipeline {
         stage('Build and puch image to Dockerhub') {
             steps {
                withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'id2', usernameVariable: 'user2')])  {
-                sh 'cd code && sudo docker build -t direction-prod:latest .'
-                sh 'sudo docker tag direction-prod:latest olaniyikolawole744/direction-prod:latest'
+                sh 'cd code && sudo docker build -t direction-app:latest .'
+                sh 'sudo docker tag direction-app:latest olaniyikolawole744/direction-prod:latest'
                 sh 'sudo docker login -u olaniyikolawole744 -p $id2'
                 sh 'sudo docker push olaniyikolawole744/direction-prod:latest'
                 }
